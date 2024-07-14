@@ -42,42 +42,6 @@ function toggleDeviceState(device)
     }
 }
 
-function updateButtonStates(data) 
-{ 
-    for (let i = 1; i <= 8; i++) 
-    {
-        let button = document.getElementById("device" + i);
-        if (button) 
-        {
-            let deviceState = "Off"; // Khởi tạo trạng thái mặc định
-            for (let j = 0; j < data.length; j++) 
-            {
-                if (data[j] === "On" + i) 
-                {
-                    deviceState = "On";
-                    break;
-                } else if (data[j] === "Off" + i) 
-                {
-                    deviceState = "Off";
-                    break;
-                }
-            }
-            // Cập nhật trạng thái của nút tương ứng
-            if (deviceState === "On") 
-            {
-                button.classList.remove("on");
-                button.classList.add("off");
-                button.innerHTML = "Turn Off " + i;
-            } else if (deviceState === "Off") 
-            {
-                button.classList.remove("off");
-                button.classList.add("on");
-                button.innerHTML = "Turn On " + i;
-            }  
-        }
-    }
-}
-
 setInterval(changeStatus, 1000);
 
 function controlDevice(deviceNumber) 
